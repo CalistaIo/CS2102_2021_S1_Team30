@@ -1,6 +1,6 @@
 CREATE TABLE Categories (
 	cat_name		VARCHAR(10) 	PRIMARY KEY, 
-	base_price		NUMERIC		
+	base_price		NUMERIC
 );
 
 CREATE TABLE Owners(
@@ -13,19 +13,20 @@ CREATE TABLE Owners(
 	unit_no			VARCHAR,
 	postal_code		VARCHAR(6)	NOT NULL,
 	credit_card_no	VARCHAR		NOT NULL,
-	reg_date		DATE		NOT NULL DEFAULT CURRENT_DATE
+	reg_date		DATE		NOT NULL DEFAULT CURRENT_DATE,
+	photo			BYTEA		NOT NULL
 );
 
 CREATE TABLE ownsPets(
-	pet_id			VARCHAR		PRIMARY KEY,
-	username		VARCHAR		NOT NULL REFERENCES Owners(username) ON DELETE CASCADE,
-	name 			NAME		NOT NULL, 
+	username		VARCHAR		NOT NULL REFERENCES Owners(username) ON DELETE CASCADE, -- username of owner
+	name 			NAME		NOT NULL, --name of pet
 	description		TEXT, 
 	cat_name		VARCHAR(10)	NOT NULL REFERENCES Categories(cat_name),
 	size			VARCHAR		NOT NULL, 
 	sociability		VARCHAR,
-	special_req		VARCHAR, 	
+	special_req		VARCHAR,
 	img				BYTEA		NOT NULL
+	PRIMARY KEY (username, name);
 );
 
 
