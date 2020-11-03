@@ -399,7 +399,6 @@ $$ DECLARE first_result INTEGER := 0;
   DECLARE second_result INTEGER := 0;
   DECLARE total_result INTEGER;
   BEGIN
-  END LOOP;
   RETURN NULL;
   END $$
 LANGUAGE plpgsql;
